@@ -2,5 +2,5 @@
   "name": "ui-coaches",
   "description": "Four read-only advisor agents — storytelling, design, copy, and accessibility — that critique a page you point them at. Advice only; they never edit files.",
   "version": "0.1.0",
-  "author": { "name": "Gerald", "email": "gsornsen@gmail.com" }
+  "author": { "name": "Gerald Sornsen", "email": "gsornsen@gmail.com" }
 }
