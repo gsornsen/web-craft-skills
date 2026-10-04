@@ -1,7 +1,8 @@
 {
   "name": "web-craft-skills",
   "owner": {
-    "name": "Gerald"
+    "name": "Gerald",
+    "email": "gsornsen@gmail.com"
   },
   "metadata": {
     "description": "Reusable Claude Code skills and agents for web / UI / UX / scrollytelling work, distilled from a multi-agent design bake-off.",

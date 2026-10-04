@@ -2,5 +2,5 @@
   "name": "web-skill-backlog",
   "description": "Seven documented, not-yet-implemented skill specs for verification-shaped web/UI tooling, each ranked by LLM-weakness x transferability x evidence. Specs are ready to implement; two carry extracted prototype scripts.",
   "version": "0.1.0",
-  "author": { "name": "Gerald" }
+  "author": { "name": "Gerald", "email": "gsornsen@gmail.com" }
 }

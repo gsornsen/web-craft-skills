@@ -2,5 +2,5 @@
   "name": "model-render",
   "description": "Render a product's STL parts into polished high-res PNG product shots via an isolated headless chromium (assembled/exploded, per-part colors, camera presets, studio/dark/transparent backdrops).",
   "version": "0.1.0",
-  "author": { "name": "Gerald" }
+  "author": { "name": "Gerald", "email": "gsornsen@gmail.com" }
 }
