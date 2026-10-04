@@ -1,0 +1,12 @@
+{
+  "name": "honest-dataviz-verifier-skill",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code skill: render a chart in an isolated headless chromium and verify each mark's pixel geometry is proportional to its data value.",
+  "scripts": { "test": "node test/run.mjs" },
+  "dependencies": {
+    "axe-core": "^4.10.0",
+    "playwright-core": "^1.62.1"
+  }
+}

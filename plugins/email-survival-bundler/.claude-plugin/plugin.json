@@ -1,0 +1,6 @@
+{
+  "name": "email-survival-bundler",
+  "description": "Bundle an HTML page into ONE self-contained file (inline local CSS, JS, images, fonts as embedded data) under a byte budget, then preflight it: meta charset present, zero remaining network references, renders correctly off disk, bytes under the ceiling, with per-asset accounting.",
+  "version": "0.1.0",
+  "author": { "name": "Gerald Sornsen", "email": "gsornsen@gmail.com" }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "type-scale-linter",
+  "description": "Audit a page's rendered computed font sizes, cluster them, propose a small modular scale with tokens, map every text element to its nearest token, and flag <br> used to join words mid-sentence.",
+  "version": "0.1.0",
+  "author": { "name": "Gerald Sornsen", "email": "gsornsen@gmail.com" }
+}

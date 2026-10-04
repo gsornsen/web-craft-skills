@@ -1,0 +1,12 @@
+{
+  "name": "email-survival-bundler-skill",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code skill: bundle an HTML page into one self-contained file under a byte budget and preflight it (charset, zero network refs, off-disk render, size) in an isolated headless chromium.",
+  "scripts": { "test": "node test/run.mjs" },
+  "dependencies": {
+    "axe-core": "^4.10.0",
+    "playwright-core": "^1.62.1"
+  }
+}

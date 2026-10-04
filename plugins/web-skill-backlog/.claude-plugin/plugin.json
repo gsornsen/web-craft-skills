@@ -1,6 +1,0 @@
-{
-  "name": "web-skill-backlog",
-  "description": "Four documented, not-yet-implemented skill specs for verification-shaped web/UI tooling, each ranked by LLM-weakness x transferability x evidence. The top three backlog skills (mobile-reach-audit, state-consistency-audit, svg-diagram-gen) are now shipped as their own plugins.",
-  "version": "0.1.0",
-  "author": { "name": "Gerald Sornsen", "email": "gsornsen@gmail.com" }
-}

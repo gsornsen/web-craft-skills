@@ -23,7 +23,10 @@ injection, SVG render+verify) that each measurement skill vendors so every plugi
 | **mobile-reach-audit** | Renders a page at phone/tablet/desktop widths and measures how far a reader must travel to the key content and CTA — flagging content hidden, clipped, or dropped at narrow widths. |
 | **state-consistency-audit** | Enumerates and drives a page's reachable states and asserts no figure is both a literal and a differing computed value, no retracted value reappears, and totals equal their parts. |
 | **svg-diagram-gen** | Routes a needed asset to the right producer (infographic / SVG author / 3D render / image-gen / chart) and verifies rendered SVG geometry is truthful and legible in context. Does not author SVG itself. |
-| **web-skill-backlog** | Four **documented, not-yet-implemented** skill specs for verification-shaped web/UI tooling, ranked by LLM-weakness × transferability × evidence. |
+| **honest-dataviz-verifier** | Verifies a chart's rendered geometry is truthful — each mark's pixel extent proportional to its value — flagging geometry-vs-value mismatch, saturation, and missing direct labels. |
+| **type-scale-linter** | Audits rendered computed font sizes, collapses a sprawling set to a tokenized modular scale, and flags `<br>` word-joins and heading-rhythm misalignment. |
+| **a11y-audit** | Injects axe-core, drives interactive states, and reports ranked accessibility findings; with `--fix`, writes a safely-fixed copy and re-audits it. The implementer counterpart to the `a11y-coach` agent. |
+| **email-survival-bundler** | Inlines a page's local assets into one self-contained file under a byte budget, then preflights it (charset present, zero network refs, renders off-disk, under ceiling). |
 
 ## Install this marketplace
 
@@ -34,25 +37,29 @@ injection, SVG render+verify) that each measurement skill vendors so every plugi
 /plugin install mobile-reach-audit@web-craft-skills
 /plugin install state-consistency-audit@web-craft-skills
 /plugin install svg-diagram-gen@web-craft-skills
-/plugin install web-skill-backlog@web-craft-skills
+/plugin install honest-dataviz-verifier@web-craft-skills
+/plugin install type-scale-linter@web-craft-skills
+/plugin install a11y-audit@web-craft-skills
+/plugin install email-survival-bundler@web-craft-skills
 ```
 
-`model-render` and the three measurement skills each have a one-time native setup (a headless chromium +
-node deps) — see each skill's `SKILL.md`.
+Every skill except `ui-coaches` has a one-time native setup (a headless chromium + node deps) — see each
+skill's `SKILL.md`.
 
-## The backlog (remaining proposed skills)
+## The backlog — all shipped
 
-Ranked by leverage in the source evidence. All are "verification-shaped" — they **render, operate, and
-measure** the real result rather than trusting the source an LLM wrote (the core blind spot the bake-off
-kept surfacing). The top three below are now **shipped** as their own plugins:
+The seven verification-shaped skills proposed in the source evidence are now **all implemented** as
+plugins above (ranked here by the leverage score behind each, "sheets" = judgment sheets that raised the
+theme). All are "verification-shaped" — they **render, operate, and measure** the real result rather than
+trusting the source an LLM wrote (the core blind spot the bake-off kept surfacing):
 
 - ✅ `mobile-reach-audit` — how far must a reader travel to the key content/CTA at phone width (113 sheets)
 - ✅ `svg-diagram-gen` — route between SVG/photo/3D-render; stop faking complex objects in SVG (105)
+- ✅ `honest-dataviz-verifier` — rendered chart geometry must equal the value (105)
+- ✅ `a11y-audit` — the implementer counterpart to the `a11y-coach` agent (78)
 - ✅ `state-consistency-audit` — enumerate + drive reachable states; no literal-vs-computed drift (77)
-- ⬜ `honest-dataviz-verifier` — rendered chart geometry must equal the value (105)
-- ⬜ `type-scale-linter` — collapse sprawling computed font sizes to a tokenized modular scale (46)
-- ⬜ `a11y-audit` — the implementer counterpart to the `a11y-coach` agent (78)
-- ⬜ `email-survival-bundler` — one self-contained file, inlined under budget, preflighted (52)
+- ✅ `email-survival-bundler` — one self-contained file, inlined under budget, preflighted (52)
+- ✅ `type-scale-linter` — collapse sprawling computed font sizes to a tokenized modular scale (46)
 
 ## License
 

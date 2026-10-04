@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// VENDORED from shared/web-probe/web-probe.mjs @ 0.1.0 — do not edit here; edit the canonical file and run shared/web-probe/scripts/sync-vendored.sh
+// VENDORED from shared/web-probe/web-probe.mjs @ 0.1.1 — do not edit here; edit the canonical file and run shared/web-probe/scripts/sync-vendored.sh
 // web-probe — load a page in an ISOLATED headless chromium, set a viewport, and read back facts
 // about the RENDERED result as plain JSON. The shared measurement layer under the
 // verification-shaped skills in this repo (mobile-reach-audit, state-consistency-audit,
@@ -35,7 +35,7 @@ import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 
-export const VERSION = '0.1.0';
+export const VERSION = '0.1.1';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
@@ -321,7 +321,7 @@ const HELPERS_SRC = String.raw`(() => {
           struck: W.struck(p), inShadow: !!inShadow, lines: box ? rng.getClientRects().length : 0 });
       }
     };
-    walk(document.body, false);
+    walk(document.body || document.documentElement, false); // body is null for a standalone .svg document
     return { nodes: out, openShadowRoots: openRoots, closedShadowCandidates: closedCandidates };
   };
 

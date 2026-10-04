@@ -35,9 +35,24 @@
       "description": "Route a needed asset to the right producer (infographic / SVG author / 3D render / image-gen / chart) and verify rendered SVG geometry is truthful and legible in context. Does not author SVG itself; points at the REFERENCES.md producers."
     },
     {
-      "name": "web-skill-backlog",
-      "source": "./plugins/web-skill-backlog",
-      "description": "Four documented, not-yet-implemented skill specs for verification-shaped web/UI tooling: honest-dataviz verifier, type-scale linter, a11y audit, email-survival bundler. (The first three backlog skills are now shipped as their own plugins.)"
+      "name": "honest-dataviz-verifier",
+      "source": "./plugins/honest-dataviz-verifier",
+      "description": "Verify a chart's rendered geometry is truthful — each mark's pixel extent proportional to its value within tolerance — flagging geometry-vs-value mismatch, saturation, and missing direct labels. Built on the web-probe harness."
+    },
+    {
+      "name": "type-scale-linter",
+      "source": "./plugins/type-scale-linter",
+      "description": "Audit a page's rendered computed font sizes, collapse a sprawling set to a modular scale, tokenize it, and flag <br> word-joins and heading-rhythm misalignment. Built on the web-probe harness."
+    },
+    {
+      "name": "a11y-audit",
+      "source": "./plugins/a11y-audit",
+      "description": "Inject axe-core, drive interactive states, and report ranked accessibility findings (contrast, focus, tap-target, landmark, keyboard reach); with --fix, writes a safely-fixed copy and re-audits it. The implementer counterpart to the a11y-coach agent. Built on the web-probe harness."
+    },
+    {
+      "name": "email-survival-bundler",
+      "source": "./plugins/email-survival-bundler",
+      "description": "Inline a page's local assets into one self-contained file under a byte budget, then preflight it: charset present, zero network references, renders off-disk, under the ceiling. Built on the web-probe harness."
     }
   ]
 }

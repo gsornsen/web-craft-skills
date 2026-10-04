@@ -1,0 +1,6 @@
+{
+  "name": "a11y-audit",
+  "description": "Audit a page for accessibility defects (axe-core + custom contrast, focus-visible, tap-target, landmark and keyboard-reachability checks) across its reachable states, rank findings by how much they block screen-reader and keyboard users, and optionally write a safely-fixed copy with a before/after violation count. The implementer counterpart to the a11y-coach agent.",
+  "version": "0.1.0",
+  "author": { "name": "Gerald Sornsen", "email": "gsornsen@gmail.com" }
+}

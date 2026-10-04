@@ -1,0 +1,14 @@
+{
+  "name": "a11y-audit-skill",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code skill: audit a page for accessibility defects (axe-core + custom checks) across its reachable states, rank by screen-reader/keyboard impact, and optionally write a safely-fixed copy.",
+  "scripts": {
+    "test": "node test/run.mjs"
+  },
+  "dependencies": {
+    "axe-core": "^4.10.0",
+    "playwright-core": "^1.62.1"
+  }
+}

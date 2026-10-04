@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Status board (broken a11y fixture)</title>
+<style>
+  body { font: 16px/1.5 system-ui, sans-serif; margin: 0; background: #fff; color: #1a1a1a; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 24px; }
+  .faint { color: #b8b8b8; }                       /* ~1.9:1 on white: low contrast */
+  .row { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+  .dot.ok { background: #2e9e4f; }                 /* meaning by colour only, no text/aria */
+  .dot.fail { background: #d33a3a; }
+  .switch { display: inline-block; width: 52px; height: 28px; border-radius: 14px; background: #888; cursor: pointer; }
+  .tiny { display: inline-block; width: 14px; height: 14px; padding: 0; border: 1px solid #333; background: #eee; font-size: 9px; }
+  #menu-btn { padding: 8px 14px; font-size: 16px; }
+  #panel { display: none; margin-top: 8px; padding: 8px; border: 1px solid #ccc; }
+  #panel.open { display: block; }
+  button { outline: none; }                         /* focus ring removed */
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Service status</h1>
+  <p class="faint">Last checked a few minutes ago. This note is hard to read on purpose.</p>
+
+  <div class="row"><span class="dot ok"></span> API gateway</div>
+  <div class="row"><span class="dot fail"></span> Billing worker</div>
+
+  <div class="row">
+    <span>Maintenance mode</span>
+    <div class="switch" id="maint" onclick="this.style.background = this.style.background === 'rgb(46, 158, 79)' ? '#888' : '#2e9e4f'"></div>
+  </div>
+
+  <div class="row"><span>Help</span> <button class="tiny" type="button">?</button></div>
+
+  <button id="menu-btn" type="button" aria-expanded="false" onclick="var p=document.getElementById('panel');p.classList.toggle('open');this.setAttribute('aria-expanded',p.classList.contains('open'))">Menu</button>
+  <div id="panel">
+    <!-- only visible once the menu is open: an icon link with no accessible name -->
+    <a id="cart-link" href="#cart"><img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='8' fill='%23333'/%3E%3C/svg%3E" width="20" height="20"></a>
+  </div>
+</div>
+</body>
+</html>

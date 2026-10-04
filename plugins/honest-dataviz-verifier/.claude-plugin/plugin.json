@@ -1,0 +1,6 @@
+{
+  "name": "honest-dataviz-verifier",
+  "description": "Verify a chart's rendered geometry is truthful: render it headless, measure each mark's pixel extent, and assert it is proportional to the underlying value within tolerance. Flags geometry-vs-value mismatch, saturation (distinct values drawn the same size, marks pinned at the axis bound) and missing direct labels / unreadable axis.",
+  "version": "0.1.0",
+  "author": { "name": "Gerald Sornsen", "email": "gsornsen@gmail.com" }
+}
