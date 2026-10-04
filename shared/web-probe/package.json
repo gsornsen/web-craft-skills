@@ -1,0 +1,17 @@
+{
+  "name": "web-probe",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared headless-chromium measurement harness for the web-craft-skills verification skills: load a page, set a viewport, read back facts about the rendered result as JSON.",
+  "main": "web-probe.mjs",
+  "exports": "./web-probe.mjs",
+  "scripts": {
+    "smoke": "node web-probe.mjs fixtures/smoke.html /tmp/web-probe-smoke --selector=#cta --text --axe --states --screenshot",
+    "sync": "bash scripts/sync-vendored.sh"
+  },
+  "dependencies": {
+    "axe-core": "^4.10.0",
+    "playwright-core": "^1.62.1"
+  }
+}

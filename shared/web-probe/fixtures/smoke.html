@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>web-probe smoke fixture</title>
+<style>
+  :root { --ink: #1c1c1e; }
+  body { margin: 0; font: 16px/1.5 system-ui, sans-serif; color: var(--ink); }
+  header { position: fixed; top: 0; left: 0; right: 0; height: 56px; background: #fff; border-bottom: 1px solid #ddd; display: flex; align-items: center; padding: 0 16px; gap: 12px; z-index: 10; }
+  header .print { margin-left: auto; }
+  main { padding: 72px 16px 40px; max-width: 960px; margin: 0 auto; }
+  h1 { font-size: 40px; margin: 0 0 8px; }
+  .lede { font-size: 18px; }
+  .spacer { height: 1500px; background: linear-gradient(#fafafa, #eee); }
+  .sidebar { font-size: 14px; }
+  @media (max-width: 600px) { .sidebar { display: none; } }
+  .cta { display: inline-block; padding: 14px 24px; background: #c62a2a; color: #fff; text-decoration: none; font-size: 18px; border-radius: 6px; }
+  .price { font-size: 32px; font-weight: 700; }
+  .clip { width: 120px; overflow: hidden; white-space: nowrap; }
+  .tiny { font-size: 11px; }
+  del { color: #888; }
+</style>
+</head>
+<body>
+<header>
+  <strong>Smoke</strong>
+  <nav><a href="#plan">Plan</a> <a href="#decide">Decide</a></nav>
+  <button class="print">Print</button>
+</header>
+<main>
+  <h1>A page that hides things</h1>
+  <p class="lede">The literal says <span id="literal">$12.89</span> per unit. The computed figure is <span id="computed">$9.39</span>.</p>
+  <aside class="sidebar">
+    <p>This sidebar text (and its figure, <span>$300</span>) disappears below 600px.</p>
+  </aside>
+
+  <section id="plan">
+    <h2>Plan</h2>
+    <label><input type="checkbox" id="rush"> Rush shipping (+$40)</label>
+    <p>Total: <strong class="price" id="total">$1,100</strong></p>
+    <p>The old figure, <del>$709</del>, was withdrawn.</p>
+    <p class="clip">This sentence is far too long for its 120px box and has no ellipsis.</p>
+    <details><summary>Assumptions</summary><p>Hidden until opened: <span>$23,565</span> a year at the ceiling.</p></details>
+    <label>Units <input type="range" id="units" min="1" max="12" value="4"></label>
+    <select id="plan-select"><option value="a">Plan A</option><option value="b">Plan B</option></select>
+  </section>
+
+  <div class="spacer" aria-hidden="true"></div>
+
+  <section id="decide">
+    <h2>Decide</h2>
+    <p class="tiny">Fine print at 11px.</p>
+    <a class="cta" id="cta" href="#plan">Back this project</a>
+  </section>
+</main>
+<script>
+  // The toggle regenerates the retracted figure: a state-consistency bug on purpose.
+  document.getElementById('rush').addEventListener('change', e => {
+    document.getElementById('total').textContent = e.target.checked ? '$709' : '$1,100';
+  });
+  document.getElementById('units').addEventListener('input', e => {
+    document.getElementById('computed').textContent = '$' + (37.56 / e.target.value).toFixed(2);
+  });
+</script>
+</body>
+</html>
