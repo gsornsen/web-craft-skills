@@ -1,0 +1,12 @@
+{
+  "name": "mobile-reach-audit-skill",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code skill: headless mobile-reachability audit built on the vendored web-probe harness.",
+  "scripts": { "test": "node test/run.mjs" },
+  "dependencies": {
+    "axe-core": "^4.10.0",
+    "playwright-core": "^1.62.1"
+  }
+}

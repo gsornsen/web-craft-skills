@@ -35,9 +35,18 @@ for d in "${DESTS[@]}"; do
     if [ "$CREATE" = 1 ]; then mkdir -p "$d/tools"; else echo "skip (missing): $d"; continue; fi
   fi
   mkdir -p "$d/tools"
+  STAMP="// VENDORED from shared/web-probe/web-probe.mjs @ $VERSION — do not edit here; edit the canonical file and run shared/web-probe/scripts/sync-vendored.sh"
   {
-    echo "// VENDORED from shared/web-probe/web-probe.mjs @ $VERSION — do not edit here; edit the canonical file and run shared/web-probe/scripts/sync-vendored.sh"
-    cat "$SRC"
+    # Preserve a leading shebang on line 1 (Node only strips it when it is the first line);
+    # the provenance stamp goes after it, otherwise the shebang becomes a SyntaxError on import.
+    if IFS= read -r first < "$SRC" && [ "${first#\#!}" != "$first" ]; then
+      echo "$first"
+      echo "$STAMP"
+      tail -n +2 "$SRC"
+    else
+      echo "$STAMP"
+      cat "$SRC"
+    fi
   } > "$d/tools/web-probe.mjs"
   echo "synced $VERSION -> $d/tools/web-probe.mjs"
 done

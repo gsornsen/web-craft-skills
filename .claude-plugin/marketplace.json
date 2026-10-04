@@ -20,9 +20,24 @@
       "description": "Four read-only advisor agents — storytelling, design, copy, and accessibility — that critique a page you point them at. Advice only; they never edit files."
     },
     {
+      "name": "mobile-reach-audit",
+      "source": "./plugins/mobile-reach-audit",
+      "description": "Render a page at phone/tablet/desktop widths and measure how far a reader must travel to the key content and CTA — flagging content hidden, clipped, or dropped at narrow widths. Built on the web-probe harness."
+    },
+    {
+      "name": "state-consistency-audit",
+      "source": "./plugins/state-consistency-audit",
+      "description": "Enumerate and drive a page's reachable states (URL params, presets, controls) and assert no figure appears as both a literal and a differing computed value, no retracted value reappears, and totals equal their parts. Built on the web-probe harness."
+    },
+    {
+      "name": "svg-diagram-gen",
+      "source": "./plugins/svg-diagram-gen",
+      "description": "Route a needed asset to the right producer (infographic / SVG author / 3D render / image-gen / chart) and verify rendered SVG geometry is truthful and legible in context. Does not author SVG itself; points at the REFERENCES.md producers."
+    },
+    {
       "name": "web-skill-backlog",
       "source": "./plugins/web-skill-backlog",
-      "description": "Seven documented, not-yet-implemented skill specs for verification-shaped web/UI tooling (mobile-reach audit, state-consistency, SVG/diagram gen, honest-dataviz, type-scale linter, a11y audit, email-survival bundler)."
+      "description": "Four documented, not-yet-implemented skill specs for verification-shaped web/UI tooling: honest-dataviz verifier, type-scale linter, a11y audit, email-survival bundler. (The first three backlog skills are now shipped as their own plugins.)"
     }
   ]
 }

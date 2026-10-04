@@ -1,0 +1,12 @@
+{
+  "name": "svg-diagram-gen-skill",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code skill: route a diagram/icon/illustration request to the right medium and producer, then render-verify the returned SVG in an isolated headless chromium.",
+  "scripts": { "test": "node test/run.mjs" },
+  "dependencies": {
+    "axe-core": "^4.10.0",
+    "playwright-core": "^1.62.1"
+  }
+}

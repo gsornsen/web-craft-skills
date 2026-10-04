@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img">
+  <title>Ingest pipeline: collector, queue, store</title>
+  <style>text{font-family:system-ui,sans-serif;font-size:16px;fill:#1a2333}</style>
+  <rect x="40" y="140" width="200" height="120" rx="12" fill="#e8f0fe" stroke="#3b6fd8" stroke-width="2"/>
+  <rect x="300" y="140" width="200" height="120" rx="12" fill="#e6f6ec" stroke="#2f9e5b" stroke-width="2"/>
+  <rect x="560" y="140" width="200" height="120" rx="12" fill="#fff4e0" stroke="#d98b1f" stroke-width="2"/>
+  <path d="M240 200 H300 M500 200 H560" stroke="#44506b" stroke-width="3" fill="none"/>
+  <text x="140" y="205" text-anchor="middle">Collector</text>
+  <text x="400" y="205" text-anchor="middle">Queue</text>
+  <text x="660" y="205" text-anchor="middle">Store</text>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "_retracted": {
+    "_enforcement": "block",
+    "figures": [
+      { "value": "$709", "replaceWith": "$619", "ruling": "double-counted display; withdrawn" }
+    ]
+  },
+  "quote": { "base": "$1,000", "shipping": "$90", "total": "$1,090", "unitPrice": "$9.39", "replacement": "$619", "handling": "$250" }
+}

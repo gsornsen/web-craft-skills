@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buried CTA fixture</title>
+<style>
+  body { margin: 0; font: 16px/1.5 system-ui, sans-serif; color: #1c1c1e; }
+  header { position: fixed; top: 0; left: 0; right: 0; height: 56px; background: #fff; border-bottom: 1px solid #ddd; display: flex; align-items: center; padding: 0 16px; z-index: 10; }
+  header .print { margin-left: auto; }
+  @media (max-width: 420px) { header .print { position: absolute; right: -40px; top: 12px; } }
+  main { padding: 72px 16px 40px; max-width: 960px; margin: 0 auto; }
+  h1 { font-size: 36px; margin: 0 0 8px; }
+  .spacer { height: 200px; }
+  @media (max-width: 900px) { .spacer { height: 2400px; } }
+  .sidebar { font-size: 14px; }
+  @media (max-width: 600px) { .sidebar { display: none; } }
+  .cta { display: inline-block; padding: 14px 24px; background: #c62a2a; color: #fff; text-decoration: none; border-radius: 6px; }
+  .clip { width: 120px; overflow: hidden; white-space: nowrap; }
+</style>
+</head>
+<body>
+<header><strong>Fixture</strong><button class="print">Print</button></header>
+<main>
+  <h1>A page that buries its point</h1>
+  <aside class="sidebar"><p>The sponsor pledge is a flat $300 for every backer tier.</p></aside>
+  <p class="clip">This sentence is far too long for its 120px box and has no ellipsis.</p>
+  <div class="spacer" aria-hidden="true"></div>
+  <section class="decide"><h2>Decide</h2><a class="cta" href="#decide">Back this project</a></section>
+</main>
+</body>
+</html>

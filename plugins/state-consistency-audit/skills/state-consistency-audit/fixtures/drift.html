@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quote calculator - drift fixture (positive control)</title>
+<style>
+  body { font: 16px/1.4 system-ui, sans-serif; margin: 24px; max-width: 720px; color: #1a1a1a; }
+  .row { display: flex; gap: 32px; align-items: center; margin: 0; padding: 14px 0; height: 20px; }
+  .row p { margin: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  td { padding: 6px 8px; border-bottom: 1px solid #ddd; }
+  details { margin: 16px 0; }
+</style>
+</head>
+<body>
+  <h1>Quote calculator</h1>
+
+  <div class="row"><p>Unit price <span id="literal">$12.89</span></p><p>Computed <span id="computed">$9.39</span></p></div>
+  <div class="row"><label>Units <input type="range" id="units" min="1" max="12" value="4"></label></div>
+  <div class="row"><label><input type="checkbox" id="rush"> Rush</label></div>
+
+  <div class="row"><p>Base <span id="base">$1,000</span></p></div>
+  <div class="row"><p>Shipping <span id="ship">$90</span></p></div>
+  <div class="row"><p>Total <span id="total">$1,100</span></p></div>
+
+  <details>
+    <summary>Fine print</summary>
+    <p>A handling fee of <span id="handling">$250</span> applies to rush orders over 3 units.</p>
+  </details>
+
+  <h2>Tier pricing</h2>
+  <table>
+    <tbody>
+      <tr><td>Tier 1</td><td>$19</td><td>5%</td></tr>
+      <tr><td>Tier 2</td><td>$29</td><td>8%</td></tr>
+      <tr><td>Tier 3</td><td>$39</td><td>10%</td></tr>
+      <tr><td>Tier 4</td><td>$49</td><td>12%</td></tr>
+      <tr><td>Tier 5</td><td>$59</td><td>15%</td></tr>
+      <tr><td>Tier 6</td><td>$69</td><td>18%</td></tr>
+      <tr><td>Tier 7</td><td>$79</td><td>20%</td></tr>
+      <tr><td>Tier 8</td><td>$89</td><td>22%</td></tr>
+      <tr><td>Tier 9</td><td>$99</td><td>25%</td></tr>
+      <tr><td>Tier 10</td><td>$119</td><td>28%</td></tr>
+      <tr><td>Tier 11</td><td>$139</td><td>30%</td></tr>
+      <tr><td>Tier 12</td><td>$159</td><td>32%</td></tr>
+      <tr><td>Tier 13</td><td>$179</td><td>35%</td></tr>
+      <tr><td>Tier 14</td><td>$199</td><td>38%</td></tr>
+      <tr><td>Tier 15</td><td>$229</td><td>40%</td></tr>
+      <tr><td>Tier 16</td><td>$249</td><td>42%</td></tr>
+      <tr><td>Tier 17</td><td>$279</td><td>45%</td></tr>
+      <tr><td>Tier 18</td><td>$299</td><td>48%</td></tr>
+      <tr><td>Tier 19</td><td>$329</td><td>50%</td></tr>
+      <tr><td>Tier 20</td><td>$359</td><td>52%</td></tr>
+      <tr><td>Tier 21</td><td>$399</td><td>55%</td></tr>
+      <tr><td>Tier 22</td><td>$449</td><td>58%</td></tr>
+    </tbody>
+  </table>
+
+  <p>Current quote notes. Rates reflect the schedule above and nothing else.</p>
+  <p>The old figure, <del>$709</del>, was withdrawn; the live number is $619.</p>
+
+  <script>
+    const q = new URLSearchParams(location.search);
+    const $ = id => document.getElementById(id);
+    const fmt = n => '$' + n.toFixed(2);
+    // the computed figure is driven by the slider; the "literal" is typed into the HTML and never updates
+    const calc = () => { $('computed').textContent = fmt(37.56 / +$('units').value); };
+    calc();
+    if (q.get('preset') === 'b') $('computed').textContent = '$9.40';
+    $('units').addEventListener('input', calc);
+    // BUG: the rush checkbox regenerates the retracted figure, un-struck, in the live total
+    $('rush').addEventListener('change', e => { $('total').textContent = e.target.checked ? '$709' : '$1,100'; });
+  </script>
+</body>
+</html>

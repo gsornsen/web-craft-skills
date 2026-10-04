@@ -1,0 +1,6 @@
+{
+  "params": { "preset": ["a", "b"] },
+  "controls": true,
+  "totals": [{ "total": "#total", "parts": ["#base", "#ship"] }],
+  "pairs": [{ "a": "#literal", "b": "#computed", "label": "unit price" }]
+}

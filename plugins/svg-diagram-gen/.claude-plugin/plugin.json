@@ -1,0 +1,6 @@
+{
+  "name": "svg-diagram-gen",
+  "description": "Decide the medium for a diagram/icon/illustration (structured SVG vs icon art vs chart vs 3D render vs image-gen) and route to the right producer, then render-verify the SVG that comes back (stray nodes, NaN attributes, tiny text, empty groups, missing title, fake-raster element counts, in-context legibility). Does not author SVG.",
+  "version": "0.1.0",
+  "author": { "name": "Gerald Sornsen", "email": "gsornsen@gmail.com" }
+}
