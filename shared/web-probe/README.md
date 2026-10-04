@@ -36,8 +36,10 @@ playwright-core build expects → the newest `~/.cache/ms-playwright/chromium-*`
   `package.json` pinning `playwright-core` + `axe-core`, so every plugin stays independently
   installable (same as `model-render` ships its own deps). Never edit the copy — edit here, then run
   `scripts/sync-vendored.sh` which re-copies and stamps a `// VENDORED from … @ <version>` header.
-- Implemented skills are promoted out of `web-skill-backlog` into their own plugin dir
-  (`plugins/<skill>/skills/<skill>/{SKILL.md,package.json,tools/,fixtures/}`), mirroring `model-render`.
+- Each skill lives in its own plugin dir
+  (`plugins/<skill>/skills/<skill>/{SKILL.md,package.json,tools/,fixtures/,test/}`), mirroring
+  `model-render`. (These seven skills began as specs in a `web-skill-backlog` plugin, since retired once
+  all were implemented.)
 
 ## Quick start
 
