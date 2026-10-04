@@ -1,0 +1,27 @@
+{
+  "name": "web-craft-skills",
+  "owner": {
+    "name": "Gerald"
+  },
+  "metadata": {
+    "description": "Reusable Claude Code skills and agents for web / UI / UX / scrollytelling work, distilled from a multi-agent design bake-off.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "model-render",
+      "source": "./plugins/model-render",
+      "description": "Render a product's STL parts into polished high-res PNG product shots via an isolated headless chromium (assembled/exploded, per-part colors, camera presets, studio/dark/transparent backdrops)."
+    },
+    {
+      "name": "ui-coaches",
+      "source": "./plugins/ui-coaches",
+      "description": "Four read-only advisor agents — storytelling, design, copy, and accessibility — that critique a page you point them at. Advice only; they never edit files."
+    },
+    {
+      "name": "web-skill-backlog",
+      "source": "./plugins/web-skill-backlog",
+      "description": "Seven documented, not-yet-implemented skill specs for verification-shaped web/UI tooling (mobile-reach audit, state-consistency, SVG/diagram gen, honest-dataviz, type-scale linter, a11y audit, email-survival bundler)."
+    }
+  ]
+}

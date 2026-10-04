@@ -1,0 +1,27 @@
+{
+  "name": "orb",
+  "label": "Orb (band ring / top+bottom half / core / tube, 5-part assembly)",
+  "sourceDir": "example_assets/design-mocks-renders-and-stl-files-etc",
+  "assetsDir": "orb",
+  "note": "World-axis convention chosen for this scene (the STLs don't define one): Y = vertical 'up' (top half sits at +Y, bottom half at -Y), Z = the tube's insertion axis, X = left/right. All five parts already share one world coordinate frame (verified against geometry-report.json) -- load with zero transforms, they nest correctly.",
+  "parts": [
+    { "key": "ring", "file": "orb_band_ring_1.stl", "label": "Band ring", "defaultColor": "1c1c1e", "smooth": false, "explode": [0, 0, 0] },
+    { "key": "top", "file": "orb_half_top_1.stl", "label": "Top half", "defaultColor": "c62a2a", "smooth": true, "explode": [0, 30, 5] },
+    { "key": "bottom", "file": "orb_half_bottom_1.stl", "label": "Bottom half", "defaultColor": "f4f1ea", "smooth": true, "explode": [0, -30, -5] },
+    { "key": "core", "file": "orb_core_1.stl", "label": "Core", "defaultColor": "f4f1ea", "smooth": true, "explode": [0, 0, 34] },
+    { "key": "tube", "file": "tube_2.stl", "label": "Tube", "defaultColor": "f4f1ea", "smooth": true, "explode": [0, 0, 68], "hideable": true }
+  ],
+  "controls": { "target": [0, 0, 10], "minDistance": 60, "maxDistance": 600 },
+  "camPresets": {
+    "hero": { "az": 28, "el": 14, "dist": 190, "target": [0, 2, 12], "fov": 40, "trackExplode": true },
+    "front": { "az": 4, "el": 3, "dist": 230, "target": [0, 0, 10], "trackExplode": true },
+    "side": { "az": 92, "el": 4, "dist": 240, "target": [0, 0, 26], "trackExplode": true },
+    "top": { "az": 40, "el": 58, "dist": 230, "target": [0, -6, 14], "trackExplode": true },
+    "back34": { "az": 205, "el": 14, "dist": 210, "target": [0, 0, 2], "trackExplode": true },
+    "detail": { "az": 22, "el": 14, "dist": 130, "target": [0, -2, 16], "trackExplode": false }
+  },
+  "explodeCamera": { "distFactor": 0.95, "targetZPerT": 14 },
+  "groundY": -70,
+  "cutawayPlane": { "normal": [1, 0, 0], "constant": 0 },
+  "defaultFov": 32
+}

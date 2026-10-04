@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Model Render — STL viewer</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #14161a; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+  #stage { position: fixed; inset: 0; }
+  /* Explicit CSS size independent of the canvas's width/height attributes (which
+     three.js sets to the physical drawing-buffer resolution = CSS size * DPR).
+     Without this, a canvas with no CSS size defaults its rendered box to those
+     attribute values, so at devicePixelRatio > 1 it overflows the viewport and
+     any viewport screenshot captures a zoomed-in crop instead of the full frame. */
+  #stage canvas { display: block; width: 100%; height: 100%; }
+
+  #ui {
+    position: fixed; top: 12px; left: 12px; z-index: 10;
+    background: rgba(20,22,26,0.82); backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;
+    padding: 14px 16px; color: #e9e9ee; font-size: 12.5px; width: 260px;
+    max-height: calc(100vh - 24px); overflow-y: auto;
+  }
+  #ui h1 { font-size: 13px; margin: 0 0 10px; font-weight: 600; letter-spacing: 0.02em; color: #fff; }
+  #ui .section { margin-bottom: 14px; }
+  #ui .section:last-child { margin-bottom: 0; }
+  #ui label { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 6px 0; }
+  #ui label span.name { opacity: 0.85; }
+  #ui input[type=color] { width: 34px; height: 22px; border: none; border-radius: 4px; background: none; cursor: pointer; padding: 0; }
+  #ui input[type=range] { width: 120px; }
+  #ui select, #ui button {
+    background: #23262c; color: #e9e9ee; border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px; padding: 5px 8px; font-size: 12px; cursor: pointer;
+  }
+  #ui button.primary { background: #3a6ff5; border-color: #3a6ff5; color: #fff; font-weight: 600; }
+  #ui .row { display: flex; gap: 6px; flex-wrap: wrap; }
+  #ui .row button { flex: 1; min-width: 60px; }
+  #ui .divider { height: 1px; background: rgba(255,255,255,0.08); margin: 12px 0; }
+  #ui .hint { opacity: 0.55; font-size: 11px; line-height: 1.4; margin-top: 4px; }
+  #ui .label-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.6; margin-bottom: 6px; }
+
+  /* Leader-line legend: an SVG overlay drawing a line from each part's actual
+     projected screen position to a text label, updated live from scene.js. A
+     color-keyed swatch legend breaks whenever two or more parts intentionally
+     share a color (e.g. this product's white-filament parts), so this draws
+     against real projected geometry instead. */
+  #leader-svg { position: fixed; inset: 0; z-index: 8; pointer-events: none; width: 100%; height: 100%; }
+
+  #hint-toggle { position: fixed; top: 12px; right: 12px; z-index: 10; }
+  #hint-toggle button {
+    background: rgba(20,22,26,0.82); color: #e9e9ee; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 6px 10px; font-size: 12px; cursor: pointer;
+  }
+  body.ui-hidden #ui, body.ui-hidden #hint-toggle { display: none !important; }
+
+  #loading {
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: #8a8f9a; font-size: 13px; z-index: 20; background: #14161a; letter-spacing: 0.03em;
+  }
+  #loading.done { display: none; }
+</style>
+</head>
+<body>
+  <div id="loading">loading geometry…</div>
+  <div id="stage"></div>
+
+  <div id="ui">
+    <h1 id="ui-title">Model Render</h1>
+
+    <div class="section">
+      <div class="label-title">Colors</div>
+      <div id="ui-colors"><!-- populated per-product by scene.js --></div>
+      <div class="row" style="margin-top:6px;">
+        <button id="preset-classic">Defaults</button>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="label-title">View</div>
+      <label><span class="name">Explode</span><input type="range" id="explode" min="0" max="1" step="0.01" value="0"></label>
+      <div class="row">
+        <button id="btn-assembled">Assembled</button>
+        <button id="btn-exploded">Exploded</button>
+      </div>
+      <label style="margin-top:8px;"><span class="name">Show legend</span><input type="checkbox" id="show-legend"></label>
+      <label><span class="name">Backdrop</span>
+        <select id="backdrop">
+          <option value="transparent">Transparent</option>
+          <option value="studio" selected>Studio gradient</option>
+          <option value="dark">Dark charcoal</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="label-title">Camera presets</div>
+      <div class="row" id="ui-cam-presets"><!-- populated per-product by scene.js --></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="hint">Drag to orbit · scroll to zoom · right-drag to pan.<br>Query params (?product=orb&ring=%23...&explode=0..1&cam=hero&backdrop=studio&hide=tube) drive this page for scripted rendering — see SKILL.md.</div>
+  </div>
+
+  <svg id="leader-svg"></svg>
+
+  <div id="hint-toggle"><button id="btn-hide-ui">Hide UI (H)</button></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "../vendor/three.module.min.js"
+  }
+}
+</script>
+<script type="module" src="./scene.js"></script>
+</body>
+</html>

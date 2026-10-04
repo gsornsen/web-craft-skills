@@ -1,0 +1,13 @@
+{
+  "name": "model-render-skill",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code skill: headless three.js STL renderer. Renders a product's STL part assembly into high-resolution PNGs (assembled/exploded, per-part colors, camera presets) via an isolated headless chromium.",
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.62.1"
+  }
+}

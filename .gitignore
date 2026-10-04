@@ -1,0 +1,11 @@
+# node
+node_modules/
+.pnpm-store/
+
+# playwright browser binaries (installed per-machine via `pnpm exec playwright install`)
+.cache/ms-playwright/
+
+# render outputs / scratch
+*.out/
+/tmp-render/
+*.log
