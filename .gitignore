@@ -9,3 +9,10 @@ node_modules/
 *.out/
 /tmp-render/
 *.log
+ci-shot.json
+ci-out/
+
+# A global ignore (e.g. ~/.gitignore_global) commonly ignores `vendor/`; model-render
+# legitimately vendors three.js there, so force it back in.
+!plugins/model-render/skills/model-render/vendor/
+!plugins/model-render/skills/model-render/vendor/**
