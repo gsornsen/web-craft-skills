@@ -31,7 +31,8 @@ injection, SVG render+verify) that each measurement skill vendors so every plugi
 ## Install this marketplace
 
 ```
-/plugin marketplace add ~/git/web-craft-skills
+/plugin marketplace add gsornsen/web-craft-skills   # from GitHub (public)
+# …or from a local clone:  /plugin marketplace add ~/git/web-craft-skills
 /plugin install model-render@web-craft-skills
 /plugin install ui-coaches@web-craft-skills
 /plugin install mobile-reach-audit@web-craft-skills
