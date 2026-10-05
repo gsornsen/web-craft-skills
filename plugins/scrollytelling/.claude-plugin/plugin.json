@@ -1,0 +1,6 @@
+{
+  "name": "scrollytelling",
+  "description": "Author scroll-driven narratives that survive a screenshot: pick a narrative pattern, plan beats and a pin budget (no browser), then verify scroll/motion integrity in headless chromium (resting state complete, reveals paint, reduced-motion safe, print, pin budget, lazy images).",
+  "version": "0.1.0",
+  "author": { "name": "Gerald Sornsen", "email": "gsornsen@gmail.com" }
+}

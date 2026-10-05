@@ -76,7 +76,7 @@ const r = await renderSvg('diagram.svg', 'out/diagram.png', { width: 1200, dpr: 
 `../shared` assets) · `{ html, files? }` (inline markup written to a temp dir and served).
 
 `opts`: `viewport {width,height}` (default phone 390×844) · `dpr` (1) · `colorScheme` ('light') ·
-`reducedMotion` · `settleMs` (300) · `timeoutMs` (30000) · `waitFor` (JS expression string polled until truthy,
+`reducedMotion` (Playwright value — the string `'reduce'`; passed straight to `newContext`, so `true` throws) · `settleMs` (300) · `timeoutMs` (30000) · `waitFor` (JS expression string polled until truthy,
 e.g. `'window.__ready === true'`) · `params` (query params merged into the base URL) · `quiet` (true).
 
 ### Probe fields

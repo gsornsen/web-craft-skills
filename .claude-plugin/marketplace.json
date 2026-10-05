@@ -53,6 +53,11 @@
       "name": "email-survival-bundler",
       "source": "./plugins/email-survival-bundler",
       "description": "Inline a page's local assets into one self-contained file under a byte budget, then preflight it: charset present, zero network references, renders off-disk, under the ceiling. Built on the web-probe harness."
+    },
+    {
+      "name": "scrollytelling",
+      "source": "./plugins/scrollytelling",
+      "description": "Plan a scroll-driven narrative (pick a pattern, outline beats, apply the scroll playbook) and verify its integrity — resting state complete, reveals paint, reduced-motion safe, within a pin budget. Distilled from the bake-off's scrollytelling learnings; built on the web-probe harness."
     }
   ]
 }

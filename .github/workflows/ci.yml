@@ -57,6 +57,7 @@ jobs:
           - { name: type-scale-linter,       dir: plugins/type-scale-linter/skills/type-scale-linter,              cmd: "node test/run.mjs" }
           - { name: a11y-audit,              dir: plugins/a11y-audit/skills/a11y-audit,                            cmd: "node test/run.mjs" }
           - { name: email-survival-bundler,  dir: plugins/email-survival-bundler/skills/email-survival-bundler,    cmd: "node test/run.mjs" }
+          - { name: scrollytelling,          dir: plugins/scrollytelling/skills/scrollytelling,                    cmd: "node test/run.mjs" }
           - { name: model-render,            dir: plugins/model-render/skills/model-render,                        cmd: "node tools/render.mjs ci-shot.json ci-out --product=orb" }
     steps:
       - uses: actions/checkout@v7

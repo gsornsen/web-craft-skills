@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scroll-jacked story</title>
+<style>
+  body { margin: 0; font: 18px/1.6 Georgia, serif; background: #111; color: #eee; }
+  .reveal { opacity: 0; transform: translateY(60px); transition: opacity .8s, transform .8s; max-width: 40rem; margin: 6rem auto; padding: 0 1.25rem; }
+  .reveal.shown { opacity: 1; transform: none; }
+  .scene { height: 400vh; position: relative; }
+  .scene .stage { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; font: 700 2rem system-ui; background: #222; }
+  /* nothing ever adds .shown: the trigger library "failed to load" and there is no reduced-motion fallback */
+</style>
+</head>
+<body>
+<div class="reveal"><h1>Chapter one begins here</h1><p>This paragraph is the entire opening argument of the story and it is invisible until a scroll trigger that never fires.</p></div>
+<div class="scene"><div class="stage">Pinned scene A</div></div>
+<div class="reveal"><h2>Chapter two arrives later</h2><p>More content that depends on the same missing trigger, so a screenshot or print shows a black page.</p></div>
+<div class="scene"><div class="stage">Pinned scene B</div></div>
+<div class="scene"><div class="stage">Pinned scene C</div></div>
+<div class="scene"><div class="stage">Pinned scene D</div></div>
+<div class="reveal"><h2>The payoff, never painted</h2><p>The final claim and the call to action sit here, hidden at rest and unreachable for anyone with reduced motion enabled.</p></div>
+<img loading="lazy" data-src="hero.jpg" alt="Hero render" width="600" height="300" style="display:block;margin:2rem auto">
+</body>
+</html>

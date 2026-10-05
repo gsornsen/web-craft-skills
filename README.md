@@ -27,6 +27,7 @@ injection, SVG render+verify) that each measurement skill vendors so every plugi
 | **type-scale-linter** | Audits rendered computed font sizes, collapses a sprawling set to a tokenized modular scale, and flags `<br>` word-joins and heading-rhythm misalignment. |
 | **a11y-audit** | Injects axe-core, drives interactive states, and reports ranked accessibility findings; with `--fix`, writes a safely-fixed copy and re-audits it. The implementer counterpart to the `a11y-coach` agent. |
 | **email-survival-bundler** | Inlines a page's local assets into one self-contained file under a byte budget, then preflights it (charset present, zero network refs, renders off-disk, under ceiling). |
+| **scrollytelling** | `plan` a scroll-driven narrative (pick a pattern, outline beats, apply the scroll playbook) and `verify` its integrity — resting state complete, reveals paint, reduced-motion safe, within a pin budget. The authoring/verification counterpart to the `storytelling-coach` agent. |
 
 ## Install this marketplace
 
@@ -42,6 +43,7 @@ injection, SVG render+verify) that each measurement skill vendors so every plugi
 /plugin install type-scale-linter@web-craft-skills
 /plugin install a11y-audit@web-craft-skills
 /plugin install email-survival-bundler@web-craft-skills
+/plugin install scrollytelling@web-craft-skills
 ```
 
 Every skill except `ui-coaches` has a one-time native setup (a headless chromium + node deps) — see each
