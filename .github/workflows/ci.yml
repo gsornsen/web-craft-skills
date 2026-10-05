@@ -1,0 +1,92 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  manifests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate JSON manifests
+        run: |
+          set -e
+          for f in .claude-plugin/marketplace.json plugins/*/.claude-plugin/plugin.json; do
+            node -e "JSON.parse(require('fs').readFileSync('$f','utf8'))" && echo "ok $f"
+          done
+      - name: Every plugin has a manifest and at least one skill or agent
+        run: |
+          set -e
+          for p in plugins/*/; do
+            test -f "$p/.claude-plugin/plugin.json" || { echo "missing manifest: $p"; exit 1; }
+            n=$(find "$p" -name SKILL.md -not -path '*/node_modules/*' | wc -l)
+            a=$(find "$p" -path '*/agents/*.md' -not -path '*/node_modules/*' | wc -l)
+            [ "$n" -ge 1 ] || [ "$a" -ge 1 ] || { echo "no skill or agent in $p"; exit 1; }
+          done
+      - name: marketplace sources resolve
+        run: |
+          node -e '
+            const m = require("./.claude-plugin/marketplace.json");
+            const fs = require("fs");
+            for (const p of m.plugins) {
+              const s = p.source.replace(/^\.\//, "");
+              if (!fs.existsSync(s + "/.claude-plugin/plugin.json")) throw new Error("bad source: " + p.source);
+            }
+            console.log("marketplace ok:", m.plugins.length, "plugins");'
+
+  skills:
+    runs-on: ubuntu-latest
+    name: skill (${{ matrix.name }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: mobile-reach-audit,      dir: plugins/mobile-reach-audit/skills/mobile-reach-audit,            cmd: "node test/run.mjs" }
+          - { name: state-consistency-audit, dir: plugins/state-consistency-audit/skills/state-consistency-audit,  cmd: "node test/run.mjs" }
+          - { name: svg-diagram-gen,         dir: plugins/svg-diagram-gen/skills/svg-diagram-gen,                  cmd: "node test/run.mjs" }
+          - { name: honest-dataviz-verifier, dir: plugins/honest-dataviz-verifier/skills/honest-dataviz-verifier,  cmd: "node test/run.mjs" }
+          - { name: type-scale-linter,       dir: plugins/type-scale-linter/skills/type-scale-linter,              cmd: "node test/run.mjs" }
+          - { name: a11y-audit,              dir: plugins/a11y-audit/skills/a11y-audit,                            cmd: "node test/run.mjs" }
+          - { name: email-survival-bundler,  dir: plugins/email-survival-bundler/skills/email-survival-bundler,    cmd: "node test/run.mjs" }
+          - { name: model-render,            dir: plugins/model-render/skills/model-render,                        cmd: "node tools/render.mjs ci-shot.json ci-out --product=orb" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install deps
+        working-directory: ${{ matrix.dir }}
+        run: npm install --no-audit --no-fund
+      - name: Install chromium matched to playwright-core
+        working-directory: ${{ matrix.dir }}
+        run: |
+          PW=$(node -p "require('playwright-core/package.json').version")
+          echo "playwright-core is $PW"
+          npx -y playwright@"$PW" install --with-deps chromium
+      - name: Prepare model-render shotlist
+        if: matrix.name == 'model-render'
+        working-directory: ${{ matrix.dir }}
+        run: echo '[{"name":"ci","product":"orb","cam":"hero","width":400,"scale":1}]' > ci-shot.json
+      - name: Run tests
+        working-directory: ${{ matrix.dir }}
+        run: ${{ matrix.cmd }}
+
+  # Single required check for branch protection: green only if manifests AND every skill leg passed.
+  ci-pass:
+    if: always()
+    needs: [manifests, skills]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Gate on upstream jobs
+        run: |
+          echo "manifests=${{ needs.manifests.result }}  skills=${{ needs.skills.result }}"
+          test "${{ needs.manifests.result }}" = "success" && test "${{ needs.skills.result }}" = "success"

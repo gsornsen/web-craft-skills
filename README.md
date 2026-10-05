@@ -68,6 +68,13 @@ trusting the source an LLM wrote (the core blind spot the bake-off kept surfacin
 - ✅ `email-survival-bundler` — one self-contained file, inlined under budget, preflighted (52)
 - ✅ `type-scale-linter` — collapse sprawling computed font sizes to a tokenized modular scale (46)
 
+## Contributing
+
+Enhancements are welcome — especially a fix you made to a skill while using it elsewhere, brought back
+upstream. `main` is protected and CI (`ci-pass`) must pass before merge. See [`CONTRIBUTING.md`](./CONTRIBUTING.md)
+(and [`CLAUDE.md`](./CLAUDE.md) if you're working as Claude Code). The golden rule: edit the canonical
+`shared/web-probe/web-probe.mjs`, never a vendored copy, and ship a test with every change.
+
 ## License
 
 Original work in this repo: MIT (see [`LICENSE`](./LICENSE)). Third-party skills referenced in
