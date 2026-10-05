@@ -10,20 +10,20 @@ Provenance below is what was recorded in the skills' own frontmatter/metadata at
 
 ## SVG / graphics generators
 
-| Skill | What it does | Origin (as recorded) | License (as recorded) | Install |
+| Skill | What it does | Origin | License | Source |
 |---|---|---|---|---|
-| `svg-infographic` | Technical/structured SVG infographics → PNG; strong CJK; sketch preset | kyungseo | ships its own `LICENSE.txt` | source TODO — ships its own license file; find upstream |
-| `svg-design` | SVG logos/icons/path art, optimization, animation | unclear (no license header) | unknown | source TODO — confirm provenance before reuse |
-| `svg-skill` (dir `svg-linyaosky`) | Production-ready SVG markup; "rebuilt less-detectable" | Reddit creator | unknown | see https://www.reddit.com/r/claudeskills/comments/1vra4yr/ (pending feedback to creator) |
-| `moai-tool-svg` | SVG creation/optimization (SVGO), icon systems, animation | MoAI / mcpmarket | Apache-2.0 | via mcpmarket (`mcpmarket-version: 1.0.0`) |
+| `svg-infographic` | Technical/structured SVG infographics → PNG; strong CJK; sketch preset | ships its own `LICENSE.txt`; **lead:** likely a MoAI skill | ships its own `LICENSE.txt` | **unverified** — possibly within https://github.com/modu-ai/moai-adk; confirm the exact skill before relying on it |
+| `svg-design` | SVG logos/icons/path art, optimization, animation | unclear (no license header) | unknown | **unverified** — no canonical upstream found; check claudeskills directories before reuse |
+| `svg-skill` (dir `svg-linyaosky`) | Production-ready SVG markup; "rebuilt less-detectable" | Reddit creator (handle ~`linyaosky`) | unknown | **unverified** — r/claudeskills post ~`1vra4yr`; locate the creator's repo before installing (pending feedback to creator) |
+| `moai-tool-svg` | SVG creation/optimization (SVGO), icon systems, animation | MoAI (`modu-ai`), via mcpmarket | Apache-2.0 | https://github.com/modu-ai/moai-adk (distributed via mcpmarket) |
 
 ## Design systems / generators
 
-| Skill | What it does | Origin | License | Install |
+| Skill | What it does | Origin | License | Source |
 |---|---|---|---|---|
-| `hallmark` | Anti-AI-slop design skill; insists on structural variety | Together AI ("Powered by Together AI") | unknown | via Together AI |
-| `impeccable` | Out-of-distribution design craft; audit/animate/polish verbs | (external product) | Apache-2.0 | `npx impeccable` (confirm current invocation upstream) |
-| `superdesign` | Design/redesign UI on an infinite canvas; multi-model; extract a site's design DNA | Superdesign | unknown | via Superdesign |
+| `hallmark` | Anti-AI-slop design skill; insists on structural variety | Hassan El Mghari (`Nutlope`, Together AI) | MIT | https://github.com/Nutlope/hallmark |
+| `impeccable` | Out-of-distribution design craft; audit/animate/polish verbs | Paul Bakaus (`pbakaus`) | Apache-2.0 | https://github.com/pbakaus/impeccable (`npx impeccable`; confirm current invocation upstream) |
+| `superdesign` | Design/redesign UI on an infinite canvas; multi-model; extract a site's design DNA | `superdesigndev` | open-source (AGPL per upstream — verify) | https://github.com/superdesigndev/superdesign |
 | `frontend-design` | Distinctive, intentional visual design guidance | Anthropic | see its `LICENSE.txt` | Anthropic skill (installed at `~/.agents/skills/frontend-design`) |
 
 ## Infographics / dataviz

@@ -46,6 +46,12 @@ injection, SVG render+verify) that each measurement skill vendors so every plugi
 Every skill except `ui-coaches` has a one-time native setup (a headless chromium + node deps) — see each
 skill's `SKILL.md`.
 
+## Combos
+
+- [**`model-render` + an infographic skill**](./docs/combos/model-render-plus-infographics.md) — render a
+  real object true-to-geometry, then wrap it in a data story. The highest-value pairing here; the
+  infographic half is a third-party skill (see [`REFERENCES.md`](./REFERENCES.md)).
+
 ## The backlog — all shipped
 
 The seven verification-shaped skills proposed in the source evidence are now **all implemented** as

@@ -18,16 +18,16 @@ catalogue() {
 External skills (see REFERENCES.md for licenses — verify upstream before use):
 
   SVG / graphics
-    svg-infographic   kyungseo            source TODO (ships its own LICENSE)
-    svg-design        unclear             source TODO — confirm provenance
-    svg-skill         Reddit creator      https://www.reddit.com/r/claudeskills/comments/1vra4yr/
-    moai-tool-svg     MoAI / mcpmarket    via mcpmarket (Apache-2.0)
+    svg-infographic   unverified          maybe within github.com/modu-ai/moai-adk — confirm the skill
+    svg-design        unverified          no canonical upstream found — check claudeskills directories
+    svg-skill         linyaosky (Reddit)  unverified — r/claudeskills post ~1vra4yr; find the creator's repo
+    moai-tool-svg     modu-ai (mcpmarket) github.com/modu-ai/moai-adk (Apache-2.0)
 
   Design systems
-    hallmark          Together AI         via Together AI
-    impeccable        external            npx impeccable   (confirm current invocation upstream)
-    superdesign       Superdesign         via Superdesign
-    frontend-design   Anthropic           Anthropic skill
+    hallmark          Nutlope/Together AI github.com/Nutlope/hallmark (MIT)
+    impeccable        Paul Bakaus         github.com/pbakaus/impeccable (Apache-2.0; npx impeccable)
+    superdesign       superdesigndev      github.com/superdesigndev/superdesign (AGPL — verify)
+    frontend-design   Anthropic           Anthropic skill (~/.agents/skills/frontend-design)
 
   Infographics / dataviz
     epic-infographics marketplace plugin  /plugin marketplace add <its marketplace>
