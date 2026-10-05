@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two ovens, one Saturday</title>
+<style>
+  body { margin: 0; font: 18px/1.6 Georgia, serif; color: #1c1917; background: #faf7f2; }
+  section { max-width: 40rem; margin: 0 auto; padding: 4rem 1.25rem; }
+  h1, h2 { font-family: system-ui, sans-serif; line-height: 1.15; }
+  .bed { position: sticky; top: 0; background: #efe6d6; padding: .75rem 1.25rem; border-bottom: 1px solid #d6c8ae; z-index: 2; font: 600 14px system-ui; }
+  .beat { transition: background-color .6s ease; border-left: 4px solid transparent; padding-left: 1rem; }
+  /* enhancement only: an active beat gets an accent rule. The text is always fully opaque. */
+  .beat.is-active { border-left-color: #b45309; }
+  @media (prefers-reduced-motion: reduce) { .beat { transition: none; } }
+</style>
+</head>
+<body>
+<div class="bed" role="note">Saturday market run: one oven vs two</div>
+<section class="beat" data-step="1"><h1>One oven, twelve loaves</h1><p>On a normal Saturday the single oven bakes twelve loaves and the queue is out the door by nine. Nothing is wrong; it is simply full.</p></section>
+<section class="beat" data-step="2"><h2>The complication</h2><p>A wedding order for forty loaves lands on the same morning. The oven cannot do both, and the market stall would go short.</p></section>
+<section class="beat" data-step="3"><h2>What a second oven changes</h2><p>With two ovens the wedding order and the market stall both ship. The cost is a second bake schedule and about nine hundred dollars of equipment.</p></section>
+<section class="beat" data-step="4"><h2>The ask</h2><p>Approve the second oven for the autumn season. If the wedding orders do not repeat, resell it at roughly two thirds of the price.</p></section>
+<script>
+  // Enhancement layer: IntersectionObserver decides WHEN; CSS decides HOW. Never hides content.
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('is-active', e.isIntersecting); }); }, { threshold: 0.5 });
+    document.querySelectorAll('.beat').forEach(function (el) { io.observe(el); });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "scrollytelling-skill",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude Code skill: plan a scroll-driven narrative (pattern, beats, pin budget) and verify its scroll/motion integrity in an isolated headless chromium.",
+  "scripts": { "test": "node test/run.mjs" },
+  "dependencies": {
+    "axe-core": "^4.10.0",
+    "playwright-core": "^1.62.1"
+  }
+}
