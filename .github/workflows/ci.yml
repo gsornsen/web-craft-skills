@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   manifests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -44,7 +44,7 @@ jobs:
             console.log("marketplace ok:", m.plugins.length, "plugins");'
 
   skills:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     name: skill (${{ matrix.name }})
     strategy:
       fail-fast: false
@@ -84,7 +84,7 @@ jobs:
   ci-pass:
     if: always()
     needs: [manifests, skills]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - name: Gate on upstream jobs
         run: |
